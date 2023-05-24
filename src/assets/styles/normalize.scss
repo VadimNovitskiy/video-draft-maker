@@ -17,7 +17,7 @@ body {
 	-webkit-text-size-adjust: 100%;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	overflow: hidden;
+	overflow: scroll;
 }
 input,
 button,
@@ -28,7 +28,6 @@ textarea {
 }
 button {
 	cursor: pointer;
-	color: inherit;
 }
 a {
 	color: inherit;
