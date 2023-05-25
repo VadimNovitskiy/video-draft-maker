@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BreakdownComponent } from './breakdown.component';
+import { KeywordsComponent } from './keywords.component';
 
 
 
 @NgModule({
   declarations: [
-    BreakdownComponent
+    KeywordsComponent
   ],
   imports: [
     CommonModule
-  ],
-  exports: [BreakdownComponent]
+  ]
 })
-export class BreakdownModule { }
+export class KeywordsModule { }

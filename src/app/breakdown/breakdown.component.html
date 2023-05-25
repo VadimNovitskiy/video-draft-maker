@@ -1,1 +1,16 @@
-<p>breakdown works!</p>
+<div class="container">
+  <div class="title">Script Breakdown</div>
+  <form (ngSubmit)="onSubmit()">
+    <div class="draft-title">Script Draft From AI</div>
+    <div class="text">{{ AItext }}</div>
+    <button type="button">Breakdown Script</button>
+
+    <div class="line"></div>
+
+    <label>
+      Feedback to AI
+      <textarea type="text" formControlName="feedback"></textarea>
+    </label>
+    <button type="submit">Redraft</button>
+  </form>
+</div>

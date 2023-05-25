@@ -1,48 +1,19 @@
-.title {
-  margin-bottom: 32px;
-}
-
 button {
   margin-top: 24px;
+  min-width: 200px;
+  align-self: flex-end;
 }
 
-form {
+.line {
+  margin: 8px 0;
+}
+
+.points {
   display: flex;
-  flex-direction: column;
-  width: 680px;
-  background-color: #EEF1F4;
-  border-radius: 16px;
-  padding: 24px;
+  flex-direction: row;
   gap: 16px;
+}
 
-  .line {
-    width: 100%;
-    height: 1px;
-    background: rgba(102, 112, 128, 0.3);
-    margin: 8px 0;
-  }
-
-  .points {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-  }
-
-  label {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    font-size: 14px;
-    line-height: 22px;
-    gap: 4px;
-  
-    input {
-      border: 1px solid #667080;
-      border-radius: 6px;
-      height: 48px;
-      font-size: 16px;
-      line-height: 22px;
-    }
-  }
-
+input {
+  height: 48px;
 }
