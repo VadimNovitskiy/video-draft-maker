@@ -10,6 +10,7 @@ import { BreakdownComponent } from './breakdown.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [BreakdownComponent]
 })
 export class BreakdownModule { }

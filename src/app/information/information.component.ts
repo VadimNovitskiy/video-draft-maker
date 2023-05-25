@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-interface contactForm {
+interface ContactForm {
   company: FormControl<string>;
   product: FormControl<string>;
   audience: FormControl<string>;
@@ -21,12 +21,12 @@ interface contactForm {
   styleUrls: ['./information.component.scss']
 })
 export class InformationComponent implements OnInit {
-  form!: FormGroup<contactForm>;
+  form!: FormGroup<ContactForm>;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.form = this.fb.group<contactForm>({
+    this.form = this.fb.group<ContactForm>({
       company: new FormControl<string>('', {
         validators: [Validators.required],
         nonNullable: true
