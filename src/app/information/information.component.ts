@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 interface ContactForm {
   company: FormControl<string>;
@@ -23,9 +24,34 @@ interface ContactForm {
 export class InformationComponent implements OnInit {
   form!: FormGroup<ContactForm>;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
+
+  @HostListener('wheel', ['$event'])
+  onScroll() {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+    const documentHeight = Math.max(
+      document.body.scrollHeight || 0,
+      document.documentElement.scrollHeight || 0,
+      document.body.offsetHeight || 0,
+      document.documentElement.offsetHeight || 0,
+      document.body.clientHeight || 0,
+      document.documentElement.clientHeight || 0
+    );
+
+    if (scrollPosition === 0) {
+      // window.history.back();
+    }
+
+    if (scrollPosition + windowHeight >= documentHeight) {
+      this.router.navigate(['/breakdown']);
+    }
+  }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
+
     this.form = this.fb.group<ContactForm>({
       company: new FormControl<string>('', {
         validators: [Validators.required],

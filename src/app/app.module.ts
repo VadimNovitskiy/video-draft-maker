@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InformationModule } from './information/information.module';
 import { BreakdownModule } from './breakdown/breakdown.module';
+import { KeywordsModule } from './keywords/keywords.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BreakdownModule } from './breakdown/breakdown.module';
     AppRoutingModule,
     HttpClientModule,
     InformationModule,
-    BreakdownModule
+    BreakdownModule,
+    KeywordsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

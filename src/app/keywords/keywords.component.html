@@ -1,1 +1,16 @@
-<p>keywords works!</p>
+<div class="container">
+  <div class="title">Script Keywords</div>
+  <form (ngSubmit)="onSubmit()">
+    <div class="draft-title">Script by Keywords</div>
+    <div class="text">{{ AItext }}</div>
+    <button type="button">Generate keywords</button>
+
+    <div class="line"></div>
+
+    <label>
+      Feedback to AI
+      <textarea type="text" formControlName="feedback"></textarea>
+    </label>
+    <button type="submit">Redraft</button>
+  </form>
+</div>

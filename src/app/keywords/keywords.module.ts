@@ -10,6 +10,7 @@ import { KeywordsComponent } from './keywords.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [KeywordsComponent]
 })
 export class KeywordsModule { }
