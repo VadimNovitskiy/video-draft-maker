@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="title">Please fill in your information</div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label>
+      Client Company Name
+      <input type="text" formControlName="company">
+    </label>
+
+    <label>
+      Product/Service Name
+      <input type="text" formControlName="product">
+    </label>
+
+    <label>
+      Target Audience Info (age range, location, interest)
+      <input type="text" formControlName="audience">
+    </label>
+
+    <label>
+      Key Problem Viewers Are Facing
+      <input type="text" formControlName="keyProblem">
+    </label>
+
+    <label>
+      Objective or Key Message
+      <input type="text" formControlName="keyMessage">
+    </label>
+
+    <div class="line"></div>
+
+    <label>
+      Brand Voice/Tone (funny, inspiring, emotional, etc.)
+      <input type="text" formControlName="voice">
+    </label>
+
+    <label>
+      Video Runtime in Seconds
+      <input type="text" formControlName="videoRuntime">
+    </label>
+
+    <div class="points">
+      <label>
+        Point 1
+        <input type="text" formControlName="firstPoint">
+      </label>
+  
+      <label>
+        Point 2
+        <input type="text" formControlName="secondPoint">
+      </label>
+  
+      <label>
+        Point 3
+        <input type="text" formControlName="thirdPoint">
+      </label>
+    </div>
+
+
+    <div class="line"></div>
+
+    <label>
+      Call to Action
+      <input type="text" formControlName="action">
+    </label>
+
+    <button type="submit">Write Script</button>
+  </form>
+</div>
