@@ -49,7 +49,7 @@ export class BreakdownComponent implements OnInit {
 
     setTimeout(() => {
       this.pageLoad = true;
-    }, 1000);
+    }, 500);
   }
 
   onSubmit() {
