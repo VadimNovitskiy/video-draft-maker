@@ -1,1 +1,22 @@
-<p>script-iteration works!</p>
+<div class="container">
+  <div class="title">AI Script Iteration</div>
+
+  <div class="accordion-group" *ngFor="let item of data;let i = index;">
+    <button class="accordion" (click)="toggleAccordian($event, i)"> {{item.parentName}} </button>
+    <div class="panel" hide="!item.isActive">
+      <video [src]="(video | async)?.video_preview_url" controls></video>
+    </div>
+  </div>
+
+  <form>
+    <div class="text">Everybody’s “in the cloud” right? So why are only 10% of <span #selected class="selected">companies</span> reaping the full benefits -- like revenue growth, new revenue streams, improved profitability and better decision making? These standouts are what we call <span #selected class="selected">cloud-powered</span> companies and they’re getting cloud RIGHT. But how are they doing it? And how can you do it too? PwC's 2023 Cloud Business Survey is here, and it reveals that a staggering 80% of executives are not yet prioritizing Industry Cloud, failing to unlock greater <span #selected class="selected">business</span> value -- and falling behind. Industry Cloud can help you stay ahead of the curve — achieving cloud success faster, and often with significantly fewer barriers to transformation. A winning cloud strategy isn’t typically one-size-fits-all, and our industry-leading knowledge across business sectors can help take your cloud transformation to the next level and deliver sustainable value from your investments.</div>
+    <input type="text" [(ngModel)]="termsForAI" [ngModelOptions]="{standalone: true}">
+    <div class="buttons">
+      <button>Previous</button>
+      <button (click)="generateResponce()">Generate</button>
+      <button>Next</button>
+    </div>
+  </form>
+   
+  <button class="result">View results</button>
+</div>

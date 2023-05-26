@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { InformationModule } from './information/information.module';
 import { BreakdownModule } from './breakdown/breakdown.module';
 import { KeywordsModule } from './keywords/keywords.module';
+import { ScriptIterationModule } from './script-iteration/script-iteration.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { KeywordsModule } from './keywords/keywords.module';
     HttpClientModule,
     InformationModule,
     BreakdownModule,
-    KeywordsModule
+    KeywordsModule,
+    ScriptIterationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ html {
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
+  overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -46,11 +47,15 @@ button {
 form {
   display: flex;
   flex-direction: column;
-  width: 680px;
+  width: 980px;
   background-color: #EEF1F4;
   border-radius: 16px;
   padding: 24px;
   gap: 16px;
+
+  &.info {
+    width: 680px;
+  }
 }
 
 .line {
