@@ -16,8 +16,8 @@ export interface VideoFile {
   providedIn: 'root'
 })
 export class VideoService {
-  private _videos = new BehaviorSubject<VideoFile | null>(null);
-  public readonly videos: Observable<VideoFile | null> = this._videos.asObservable();
+  private _videos = new BehaviorSubject<VideoFile[]>([]);
+  public readonly videos: Observable<VideoFile[]> = this._videos.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -37,7 +37,7 @@ export class VideoService {
     .pipe(tap(
       res => {
         console.log(res);
-        this._videos.next(res.files[0]);
+        this._videos.next(res.files.slice(0, 3));
     }));
   }
 }

@@ -40,7 +40,7 @@ export class KeywordsComponent implements OnInit {
     }
 
     if (scrollPosition + windowHeight >= documentHeight) {
-      // this.router.navigate(['/keywords']);
+      this.router.navigate(['/script-iteration']);
     }
   }
 

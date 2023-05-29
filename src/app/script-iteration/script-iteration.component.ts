@@ -1,6 +1,7 @@
-import { Component, ElementRef, HostListener, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { VideoFile, VideoService } from './video.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-script-iteration',
@@ -34,7 +35,9 @@ export class ScriptIterationComponent {
   }];
 
   termsForAI = '';
-  video: Observable<VideoFile | null>;
+  videos: Observable<VideoFile[]>;
+
+  pageLoad = false;
 
   @ViewChildren('selected') selectedElements!: QueryList<ElementRef>;
 
@@ -45,8 +48,8 @@ export class ScriptIterationComponent {
     }
   }
 
-  constructor(private videoService: VideoService) {
-    this.video = this.videoService.videos;
+  constructor(private videoService: VideoService, private elem: ElementRef) {
+    this.videos = this.videoService.videos;
   }
 
   generateResponce() {
@@ -57,9 +60,7 @@ export class ScriptIterationComponent {
   }
 
   selectWord(element: HTMLElement) {
-    this.selectedElements.forEach(elem => {
-      elem.nativeElement.classList.remove('activeWord');
-    });
+    this.clearActiveClass();
 
     element.classList.add('activeWord');
     this.termsForAI = element.textContent ?? '';
@@ -80,5 +81,73 @@ export class ScriptIterationComponent {
       panel.style.maxHeight = 180 + "px";
       // panel.style.maxHeight = panel.scrollHeight + "px";
     }
+  }
+
+  clearActiveClass() {
+    this.selectedElements.forEach(elem => {
+      elem.nativeElement.classList.remove('activeWord');
+    });
+  }
+
+  next() {
+    const arrayOfSelectedElement = this.selectedElements.toArray();
+    const currentIndex = arrayOfSelectedElement.findIndex(elem => elem.nativeElement.classList.contains('activeWord'));
+
+    if (currentIndex !== -1 && currentIndex < arrayOfSelectedElement.length -1) {
+      this.clearActiveClass();
+      const nextActiveElement = arrayOfSelectedElement[currentIndex + 1];
+
+      nextActiveElement.nativeElement.classList.add('activeWord');
+      this.termsForAI = nextActiveElement.nativeElement.textContent ?? '';
+    }
+  }
+
+  before() {
+    const arrayOfSelectedElement = this.selectedElements.toArray();
+    const currentIndex = arrayOfSelectedElement.findIndex(elem => elem.nativeElement.classList.contains('activeWord'));
+
+    if (currentIndex !== -1 && currentIndex !== 0) {
+      this.clearActiveClass();
+      const nextActiveElement = arrayOfSelectedElement[currentIndex - 1];
+
+      nextActiveElement.nativeElement.classList.add('activeWord');
+      this.termsForAI = nextActiveElement.nativeElement.textContent ?? '';
+    }
+  }
+
+  @HostListener('wheel', ['$event'])
+  onScroll() {
+
+    if (!this.pageLoad) {
+      return;
+    }
+
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+    const documentHeight = Math.max(
+      document.body.scrollHeight || 0,
+      document.documentElement.scrollHeight || 0,
+      document.body.offsetHeight || 0,
+      document.documentElement.offsetHeight || 0,
+      document.body.clientHeight || 0,
+      document.documentElement.clientHeight || 0
+    );
+
+    if (scrollPosition === 0) {
+      window.history.back();
+    }
+
+    if (scrollPosition + windowHeight >= documentHeight) {
+      // this.router.navigate(['/keywords']);
+    }
+  }
+
+  ngOnInit(): void {
+    window.scrollTo(0, 1);
+
+    setTimeout(() => {
+      this.pageLoad = true;
+    }, 500);
   }
 }
